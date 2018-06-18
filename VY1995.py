@@ -22,7 +22,7 @@ def __write_vy1995_table(filename=VY_TABLE_FILE):
     vy1995.write(filename, format='ascii', overwrite=True)
     return
 
-vy1995 = Table.read(VY_TABLE_FILE)
+vy1995 = Table.read(VY_TABLE_FILE, format='ascii')
 
 def get_element(z, ion=None, shell=None):
     """
