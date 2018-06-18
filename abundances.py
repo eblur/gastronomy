@@ -5,6 +5,15 @@
 # Some typical abundance tables
 #-------------------------------------------------------------------------
 
+import numpy as np
+
+# Atomic numbers (Z)
+
+Z = {'H':1, 'He':2, 'C':6, 'N':7, 'O':8, 'Ne':10, \
+    'Na':11, 'Mg':12, 'Al':13, 'Si':14, 'P':15, 'S':16, 'Cl':17, \
+    'Ar':18, 'Ca':20, 'Ti':22, 'Cr':24, 'Mn':25, 'Fe':26, \
+    'Co':27, 'Ni':28}
+
 # ISM abundances from Wilms, Allen, McCray (2000)
 wilms_ISM = {'H':12.0, 'He':10.99, 'C':8.38, 'N':7.88, 'O':8.69, 'Ne':7.94, \
     'Na':6.16, 'Mg':7.40, 'Al':6.33, 'Si':7.27, 'P':5.42, 'S':7.09, 'Cl':5.12, \
@@ -22,7 +31,7 @@ gas_ratio_alt = {'H':1.0, 'He':1.0, 'C':0.5, 'N':1.0, 'O':0.6, 'Ne':1.0, \
     'Ar':1.0, 'Ca':0.003, 'Ti':0.002, 'Cr':0.03, 'Mn':0.07, 'Fe':0.0, \
     'Co':0.05, 'Ni':0.04}
 
-def get_ISM_abund(elem, abund_table=wilms_ISM):
+def get_total_abund(elem, abund_table=wilms_ISM):
     """
     Returns
     -------
@@ -70,7 +79,7 @@ def get_dust_abund(elem, abund_table=wilms_ISM, gas_ratio=wilms_ISM_gas_ratio):
     assert type(elem) == str
     assert type(abund_table) == dict
     assert type(gas_ratio) == dict
-    return get_ISM_abund(elem, abund_table) * (1.0 - gas_ratio[elem])
+    return get_total_abund(elem, abund_table) * (1.0 - gas_ratio[elem])
 
 def get_gas_abund(elem, abund_table=wilms_ISM, gas_ratio=wilms_ISM_gas_ratio):
     """
@@ -98,4 +107,4 @@ def get_gas_abund(elem, abund_table=wilms_ISM, gas_ratio=wilms_ISM_gas_ratio):
     assert type(elem) == str
     assert type(abund_table) == dict
     assert type(gas_ratio) == dict
-    return get_ISM_abund(elem, abund_table) * gas_ratio[elem]
+    return get_total_abund(elem, abund_table) * gas_ratio[elem]
