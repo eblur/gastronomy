@@ -7,8 +7,8 @@
 
 import astropy.units as u
 import astropy.constants as c
-from .abundances import Z
-from .minerals import amu
+from abundances import Z
+from minerals import amu
 
 class Molecule(object):
     def __init__(self, composition):
@@ -35,7 +35,7 @@ class Molecule(object):
         -------
         number
         """
-        self.composition = comp
+        self.composition = composition
 
     @property
     def weight_amu(self):
