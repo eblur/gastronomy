@@ -11,10 +11,13 @@ from abundances import Z
 from minerals import amu
 
 class Molecule(object):
-    def __init__(self, composition):
+    def __init__(self, composition, name=None):
         """
         Inputs
         ------
+        name : string (optional)
+            A string describing the molecule. Defaults to None
+
         composition : dictionary
             A dictionary describing the number of atoms of each element type
             in the molecule
@@ -23,7 +26,9 @@ class Molecule(object):
 
         Attributes
         ----------
-        composition
+        name : string (or None)
+
+        composition : dictionary
 
         weight_amu : float
             The weight of the molecule in atomic mass units (amu)
@@ -41,6 +46,7 @@ class Molecule(object):
         >>> CO2.elements
         ['C','O']
         """
+        self.name = name
         self.composition = composition
 
     @property
