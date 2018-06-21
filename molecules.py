@@ -31,11 +31,21 @@ class Molecule(object):
         weight : astropy.units.Quantity
             The mass of the molecule
 
-        Methods
+        elements : list
+            Returns the elements that make up the keys for self.composition
+
+        Example
         -------
-        number
+
+        >>> CO2 = Molecule({'C':1, 'O':2})
+        >>> CO2.elements
+        ['C','O']
         """
         self.composition = composition
+
+    @property
+    def elements(self):
+        return self.composition.keys()
 
     @property
     def weight_amu(self):
