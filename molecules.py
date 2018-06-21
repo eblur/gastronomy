@@ -42,7 +42,7 @@ class Molecule(object):
         Example
         -------
 
-        >>> CO2 = Molecule({'C':1, 'O':2})
+        >>> CO2 = Molecule({'C':1, 'O':2}, name='CO_2')
         >>> CO2.elements
         ['C','O']
         """
