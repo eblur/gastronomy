@@ -7,8 +7,7 @@
 
 import astropy.units as u
 import astropy.constants as c
-from abundances import Z
-from minerals import amu
+from abundances import Z, amu
 
 class Molecule(object):
     def __init__(self, composition, name=None):

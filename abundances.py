@@ -1,5 +1,5 @@
 #
-# abundances.py
+# abundances.py -- a library of abundance dictionaries and atomic properties
 # Created 2018.06.18 -- lia@astro.wisc.edu
 #
 # Some typical abundance tables
@@ -8,11 +8,16 @@
 import numpy as np
 
 # Atomic numbers (Z)
-
 Z = {'H':1, 'He':2, 'C':6, 'N':7, 'O':8, 'Ne':10, \
     'Na':11, 'Mg':12, 'Al':13, 'Si':14, 'P':15, 'S':16, 'Cl':17, \
     'Ar':18, 'Ca':20, 'Ti':22, 'Cr':24, 'Mn':25, 'Fe':26, \
     'Co':27, 'Ni':28}
+
+# Weights in atomic mass units (amu's)
+amu = {'H':1.008,'He':4.0026,'C':12.011,'N':14.007,'O':15.999,'Ne':20.1797, \
+       'Na':22.989,'Mg':24.305,'Al':26.981,'Si':28.085,'P':30.973,'S':32.06, \
+       'Cl':35.45,'Ar':39.948,'Ca':40.078,'Ti':47.867,'Cr':51.9961,'Mn':54.938, \
+       'Fe':55.845,'Co':58.933,'Ni':58.6934}
 
 # ISM abundances from Wilms, Allen, McCray (2000)
 wilms_ISM = {'H':12.0, 'He':10.99, 'C':8.38, 'N':7.88, 'O':8.69, 'Ne':7.94, \
