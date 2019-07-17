@@ -1,4 +1,4 @@
-import abundances
-import minerals
-import molecules
-import VY1995
+from . import abundances
+from . import minerals
+from . import molecules
+from . import VY1995
