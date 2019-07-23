@@ -7,12 +7,15 @@
 #
 #-----------------------------------------------------------------------------
 
+import os
 import numpy as np
 
 import astropy.units as u
 from astropy.table import Table
 
-VY_TABLE_FILE = 'VY1995_vizier.txt'
+root_path = os.path.dirname(__file__)
+data_path = root_path + '/tables/'
+VY_TABLE_FILE = data_path + 'VY1995_vizier.txt'
 
 def __write_vy1995_table(filename=VY_TABLE_FILE):
     from astroquery.vizier import Vizier

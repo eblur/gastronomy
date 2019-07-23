@@ -1,0 +1,8 @@
+1 Olivine     a Mg_1.56_Fe_0.4_Si_0.91_O_4_ crystalline olivine.dat
+2 En60Fs40    b Mg_0.6_Fe_0.4_SiO_3_        amorphous   en60fs40_am.dat
+3 En60Fs40    b Mg_0.6_Fe_0.4_SiO_3_        crystalline en60fs40_cr.dat
+4 Troilite    c FeS                         crystalline troilite.dat
+5 Hypersthene d Mg_1.502_Fe0.498_Si2O_6_    crystalline hypersthene.dat
+6 En90Fs10    b Mg_0.9_Fe_0.1_SiO_3_        crystalline en90fs10_cr.dat
+7 En90Fs10    b Mg_0.9_Fe_0.1_SiO_3_        amorphous   en90fs10_am.dat
+8 Pyrrhotite  b Fe_0.875S                   crystalline pyrrhotite.dat

@@ -5,8 +5,8 @@
 # Some general atomic properties, useful for interpretting column densities
 #-------------------------------------------------------------------------
 
-from molecules import Molecule
-from abundances import amu
+from .molecules import Molecule
+from .abundances import amu
 import astropy.constants as c
 
 class Mineral(Molecule):
