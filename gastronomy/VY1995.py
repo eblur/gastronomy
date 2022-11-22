@@ -83,13 +83,13 @@ def _compute_xsect_from_row(egrid, row):
     #print(Z, N, n, l, E_th, E_0, sigma_0, y_a, P, y_w)
 
     # VY1995 formula
-    y = egrid.to('eV') / (E_0 * u.eV)
+    y = egrid.to('eV', equivalencies=u.spectral()) / (E_0 * u.eV)
     Q = 5.5 + l - 0.5 * P
     F = ((y-1.)**2 + y_w**2) * np.power(y, -Q) * np.power((1. + np.sqrt(y/y_a)), -P)
     formula = sigma_0 * u.Mbarn * F
 
     # everything below the threshold energy is zero
-    efilt   = egrid.to('eV').value > E_th
+    efilt   = egrid.to('eV', equivalencies=u.spectral()).value > E_th
     result  = np.zeros(len(egrid)) * u.Mbarn
     result[efilt] = formula[efilt]
     return result
