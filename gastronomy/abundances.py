@@ -37,6 +37,44 @@ gas_ratio_alt = {'H':1.0, 'He':1.0, 'C':0.5, 'N':1.0, 'O':0.6, 'Ne':1.0, \
     'Ar':1.0, 'Ca':0.003, 'Ti':0.002, 'Cr':0.03, 'Mn':0.07, 'Fe':0.0, \
     'Co':0.05, 'Ni':0.04}
 
+# ISM abundances from Hensley & Draine (2021) as outlined in Table 1 of Draine & Hensley (2022)
+def ppm_to_A(ppm):
+    # Convert (X/H) values in ppm to np.log10(X/H) + 12.0
+    return np.log10(ppm * 1.e-6) + 12.0
+
+# He/H value is approximate
+HD21_ISM = {'H':12.0, 'He':11.0,
+            'C':ppm_to_A(324.),
+            'O':ppm_to_A(682.),
+            'Mg':ppm_to_A(52.9),
+            'Al':ppm_to_A(3.48),
+            'Si':ppm_to_A(44.6),
+            'S':ppm_to_A(17.2),
+            'Ca':ppm_to_A(3.25),
+            'Fe':ppm_to_A(43.7),
+            'Ni':ppm_to_A(2.09)}
+
+HD21_ISM_gas_ratio = {'H':1.0, 'He':1.0, 'Li':1.0, 'N':1.0, 'Ne':1.0, 'Ar':1.0, # inserted by me
+                      'C':198./324.,
+                      'O':434./682.,
+                      'Mg':7.1/52.9,
+                      'Al':0.07/3.48,
+                      'Si':6.6/44.6,
+                      'S':9.6/17.2,
+                      'Ca':0.07/3.25,
+                      'Fe':0.9/43.7,
+                      'Ni':0.04/2.09}
+
+HD21_dust = {'C':ppm_to_A(126.),
+             'O':ppm_to_A(248.),
+             'Mg':ppm_to_A(46.),
+             'Al':ppm_to_A(3.4),
+             'Si':ppm_to_A(38.0),
+             'S':ppm_to_A(7.6),
+             'Ca':ppm_to_A(3.2),
+             'Fe':ppm_to_A(43.),
+             'Ni':ppm_to_A(2.1)}
+
 def get_total_abund(elem, abund_table=wilms_ISM):
     """
     Returns
