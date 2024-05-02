@@ -13,6 +13,8 @@ import numpy as np
 import astropy.units as u
 from astropy.table import Table
 
+from .abundances import Z
+
 root_path = os.path.dirname(__file__)
 data_path = root_path + '/tables/'
 VY_TABLE_FILE = data_path + 'VY1995_vizier.txt'
@@ -125,4 +127,33 @@ def compute_xsect(egrid, z, ion=None, shell=None):
     rows   = vy1995[filt]
     for r in rows:
         result += _compute_xsect_from_row(egrid, r)
+    return result
+
+def mineral_abs_xsect(egrid, mineral):
+    """Build a continuum absorption model from the VY1995 tables
+    following the chemical formula of a molecule or mineral.
+
+    Inputs
+    ------
+    
+    egrid : astropy.units.Quantity (array)
+        Energy values for which to compute the cross-sections
+
+    mineral : gas.minerals.Mineral object or similar
+        Contains the chemical formula for the compound
+
+    Returns
+    -------
+    Absorption cross-section (Astropy.Quantity) for the mineral over
+    egrid values
+    """
+    first_call = True
+    result = None
+    for ele in mineral.elements:
+        temp = compute_xsect(egrid, Z[ele], ion=0) * mineral.composition[ele]
+        if first_call:
+            result = temp
+            first_call = False
+        else:
+            result += temp
     return result
