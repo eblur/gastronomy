@@ -36,4 +36,29 @@ plt.plot(egrid, abs_xsect.to('Mbarn'))
 plt.loglog()
 plt.xlabel(egrid.unit)
 plt.ylabel('Mbarn per unit compound')
+plt.show()
+```
+
+To compute the absorption cross-section for one ion from the Verner & Yakovlev (1995) tables:
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+import astropy.units as u
+import gastronomy
+
+egrid = np.linspace(0.1, 3.0, 1000000) * u.keV
+
+Z_Fe = 26 # atomic number for Iron
+
+abs_xsect_FeI = gastronomy.VY1995.compute_xsect(egrid, Z_Fe, ion=0)  # this will have units of area
+abs_xsect_FeIV = gastronomy.VY1995.compute_xsect(egrid, Z_Fe, ion=3) # He-like iron
+
+plt.plot(egrid, abs_xsect_FeI.to('Mbarn'), label='Neutral Fe')
+plt.plot(egrid, abs_xsect_FeIV.to('Mbarn'), label='Fe IV')
+plt.loglog()
+plt.legend()
+plt.xlabel(egrid.unit)
+plt.ylabel('Mbarn per unit compound')
+plt.show()
 ```
