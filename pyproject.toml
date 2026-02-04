@@ -28,4 +28,4 @@ dev = ["pytest>=7.0"]
 # -------------------------------------------------
 # Tell setuptools where the source lives
 [tool.setuptools.packages.find]
-where = ["gastronomy"]       # look inside the outer folder named “newdust”
+where = ["."]       # where the main source code lives
