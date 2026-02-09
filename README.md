@@ -10,7 +10,7 @@ Navigate to the top "gastronomy" folder.
 Then run:
 
 ```
-python setup.py install
+pip install -e .
 ```
 
 Exit out of the directory before you try running it.

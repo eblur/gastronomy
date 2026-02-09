@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gastronomy"
+version = "1.0"
+description = "Convenience functions and scripts for calculating ISM properties from a few simple abundance tables"
+authors = [
+    { name = "Lia Corrales", email = "liac@umich.edu" }
+]
+readme = "README.md"
+license = { text = "GNU-GPL v2.0" } # adjust if you use a different license
+requires-python = ">=3.8"           # set the minimum Python version you support
+
+# -------------------------------------------------
+# Copy the packages you would otherwise put in requirements.txt 
+dependencies = [
+    "numpy",
+    "astropy"
+]
+
+# -------------------------------------------------
+# Optional: Development‑only dependencies (e.g., testing, linting)
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+# -------------------------------------------------
+# Tell setuptools where the source lives
+[tool.setuptools.packages.find]
+where = ["."]       # where the main source code lives
