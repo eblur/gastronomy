@@ -85,6 +85,8 @@ def _compute_xsect_from_row(egrid, row):
     #print(Z, N, n, l, E_th, E_0, sigma_0, y_a, P, y_w)
 
     # VY1995 formula
+    if not isinstance(egrid, u.Quantity):
+        raise TypeError(f"Expected an astropy Quantity, got {type(egrid)}")
     y = egrid.to('eV', equivalencies=u.spectral()) / (E_0 * u.eV)
     Q = 5.5 + l - 0.5 * P
     F = ((y-1.)**2 + y_w**2) * np.power(y, -Q) * np.power((1. + np.sqrt(y/y_a)), -P)
