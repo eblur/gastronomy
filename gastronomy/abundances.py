@@ -103,6 +103,11 @@ def get_total_abund(elem, abund_table=wilms_ISM):
         A dictionary describing the abundance of Z per H (12 + log A_z).
         The default is to use the Wilms, Allens, & McCray (2000) abundances
         described in Table 2 of their paper.
+
+    Unit tests
+    ----------
+    >>> get_total_abund('H')
+    np.float64(1.0)
     """
     assert type(elem) == str
     assert type(abund_table) == dict
@@ -158,6 +163,11 @@ def get_gas_abund(elem, abund_table=wilms_ISM, gas_ratio=wilms_ISM_gas_ratio):
         A dictionary describing the fraction of element Z suspected to remain
         in the gas phase (where 1 - gas_ratio is the 'depletion', or fraction
         locked up in dust grains).
+
+    Unit tests
+    ----------
+    >>> get_gas_abund('H')
+    np.float64(1.0)
     """
     assert type(elem) == str
     assert type(abund_table) == dict

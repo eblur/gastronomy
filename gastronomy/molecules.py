@@ -43,7 +43,7 @@ class Molecule(object):
 
         >>> CO2 = Molecule({'C':1, 'O':2}, name='CO_2')
         >>> CO2.elements
-        ['C','O']
+        dict_keys(['C', 'O'])
         """
         self.name = name
         self.composition = composition
