@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abundances &mdash; Gastronomy 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Quick Start" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Gastronomy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Abundances</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gastronomy.abundances.get_dust_abund"><code class="docutils literal notranslate"><span class="pre">get_dust_abund()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gastronomy.abundances.get_gas_abund"><code class="docutils literal notranslate"><span class="pre">get_gas_abund()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gastronomy.abundances.get_total_abund"><code class="docutils literal notranslate"><span class="pre">get_total_abund()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gastronomy.abundances.ppm_to_A"><code class="docutils literal notranslate"><span class="pre">ppm_to_A()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#minerals">Minerals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gastronomy.minerals.Mineral"><code class="docutils literal notranslate"><span class="pre">Mineral</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#vy1995">VY1995</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gastronomy.VY1995.compute_xsect"><code class="docutils literal notranslate"><span class="pre">compute_xsect()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gastronomy.VY1995.mineral_abs_xsect"><code class="docutils literal notranslate"><span class="pre">mineral_abs_xsect()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gastronomy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Abundances</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-gastronomy.abundances">
+<span id="abundances"></span><h1>Abundances<a class="headerlink" href="#module-gastronomy.abundances" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="gastronomy.abundances.get_dust_abund">
+<span class="sig-prename descclassname"><span class="pre">gastronomy.abundances.</span></span><span class="sig-name descname"><span class="pre">get_dust_abund</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abund_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Al':</span> <span class="pre">6.33,</span> <span class="pre">'Ar':</span> <span class="pre">6.41,</span> <span class="pre">'C':</span> <span class="pre">8.38,</span> <span class="pre">'Ca':</span> <span class="pre">6.2,</span> <span class="pre">'Cl':</span> <span class="pre">5.12,</span> <span class="pre">'Co':</span> <span class="pre">4.92,</span> <span class="pre">'Cr':</span> <span class="pre">5.51,</span> <span class="pre">'Fe':</span> <span class="pre">7.43,</span> <span class="pre">'H':</span> <span class="pre">12.0,</span> <span class="pre">'He':</span> <span class="pre">10.99,</span> <span class="pre">'Mg':</span> <span class="pre">7.4,</span> <span class="pre">'Mn':</span> <span class="pre">5.34,</span> <span class="pre">'N':</span> <span class="pre">7.88,</span> <span class="pre">'Na':</span> <span class="pre">6.16,</span> <span class="pre">'Ne':</span> <span class="pre">7.94,</span> <span class="pre">'Ni':</span> <span class="pre">6.05,</span> <span class="pre">'O':</span> <span class="pre">8.69,</span> <span class="pre">'P':</span> <span class="pre">5.42,</span> <span class="pre">'S':</span> <span class="pre">7.09,</span> <span class="pre">'Si':</span> <span class="pre">7.27,</span> <span class="pre">'Ti':</span> <span class="pre">4.81}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gas_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Al':</span> <span class="pre">0.02,</span> <span class="pre">'Ar':</span> <span class="pre">1.0,</span> <span class="pre">'C':</span> <span class="pre">0.5,</span> <span class="pre">'Ca':</span> <span class="pre">0.003,</span> <span class="pre">'Cl':</span> <span class="pre">0.5,</span> <span class="pre">'Co':</span> <span class="pre">0.05,</span> <span class="pre">'Cr':</span> <span class="pre">0.03,</span> <span class="pre">'Fe':</span> <span class="pre">0.3,</span> <span class="pre">'H':</span> <span class="pre">1.0,</span> <span class="pre">'He':</span> <span class="pre">1.0,</span> <span class="pre">'Mg':</span> <span class="pre">0.2,</span> <span class="pre">'Mn':</span> <span class="pre">0.07,</span> <span class="pre">'N':</span> <span class="pre">1.0,</span> <span class="pre">'Na':</span> <span class="pre">0.25,</span> <span class="pre">'Ne':</span> <span class="pre">1.0,</span> <span class="pre">'Ni':</span> <span class="pre">0.04,</span> <span class="pre">'O':</span> <span class="pre">0.6,</span> <span class="pre">'P':</span> <span class="pre">0.6,</span> <span class="pre">'S':</span> <span class="pre">0.6,</span> <span class="pre">'Si':</span> <span class="pre">0.1,</span> <span class="pre">'Ti':</span> <span class="pre">0.002}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gastronomy.abundances.get_dust_abund" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>float</dt><dd><p>N_z (number of atoms of element with atomic number z)
+per H (hydrogen atom) expected to be locked in dust grains.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gastronomy.abundances.get_gas_abund">
+<span class="sig-prename descclassname"><span class="pre">gastronomy.abundances.</span></span><span class="sig-name descname"><span class="pre">get_gas_abund</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abund_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Al':</span> <span class="pre">6.33,</span> <span class="pre">'Ar':</span> <span class="pre">6.41,</span> <span class="pre">'C':</span> <span class="pre">8.38,</span> <span class="pre">'Ca':</span> <span class="pre">6.2,</span> <span class="pre">'Cl':</span> <span class="pre">5.12,</span> <span class="pre">'Co':</span> <span class="pre">4.92,</span> <span class="pre">'Cr':</span> <span class="pre">5.51,</span> <span class="pre">'Fe':</span> <span class="pre">7.43,</span> <span class="pre">'H':</span> <span class="pre">12.0,</span> <span class="pre">'He':</span> <span class="pre">10.99,</span> <span class="pre">'Mg':</span> <span class="pre">7.4,</span> <span class="pre">'Mn':</span> <span class="pre">5.34,</span> <span class="pre">'N':</span> <span class="pre">7.88,</span> <span class="pre">'Na':</span> <span class="pre">6.16,</span> <span class="pre">'Ne':</span> <span class="pre">7.94,</span> <span class="pre">'Ni':</span> <span class="pre">6.05,</span> <span class="pre">'O':</span> <span class="pre">8.69,</span> <span class="pre">'P':</span> <span class="pre">5.42,</span> <span class="pre">'S':</span> <span class="pre">7.09,</span> <span class="pre">'Si':</span> <span class="pre">7.27,</span> <span class="pre">'Ti':</span> <span class="pre">4.81}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gas_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Al':</span> <span class="pre">0.02,</span> <span class="pre">'Ar':</span> <span class="pre">1.0,</span> <span class="pre">'C':</span> <span class="pre">0.5,</span> <span class="pre">'Ca':</span> <span class="pre">0.003,</span> <span class="pre">'Cl':</span> <span class="pre">0.5,</span> <span class="pre">'Co':</span> <span class="pre">0.05,</span> <span class="pre">'Cr':</span> <span class="pre">0.03,</span> <span class="pre">'Fe':</span> <span class="pre">0.3,</span> <span class="pre">'H':</span> <span class="pre">1.0,</span> <span class="pre">'He':</span> <span class="pre">1.0,</span> <span class="pre">'Mg':</span> <span class="pre">0.2,</span> <span class="pre">'Mn':</span> <span class="pre">0.07,</span> <span class="pre">'N':</span> <span class="pre">1.0,</span> <span class="pre">'Na':</span> <span class="pre">0.25,</span> <span class="pre">'Ne':</span> <span class="pre">1.0,</span> <span class="pre">'Ni':</span> <span class="pre">0.04,</span> <span class="pre">'O':</span> <span class="pre">0.6,</span> <span class="pre">'P':</span> <span class="pre">0.6,</span> <span class="pre">'S':</span> <span class="pre">0.6,</span> <span class="pre">'Si':</span> <span class="pre">0.1,</span> <span class="pre">'Ti':</span> <span class="pre">0.002}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gastronomy.abundances.get_gas_abund" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>float</dt><dd><p>N_z (number of atoms of element with atomic number z)
+per H (hydrogen atom) expected to be in the gas phase.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gastronomy.abundances.get_total_abund">
+<span class="sig-prename descclassname"><span class="pre">gastronomy.abundances.</span></span><span class="sig-name descname"><span class="pre">get_total_abund</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abund_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Al':</span> <span class="pre">6.33,</span> <span class="pre">'Ar':</span> <span class="pre">6.41,</span> <span class="pre">'C':</span> <span class="pre">8.38,</span> <span class="pre">'Ca':</span> <span class="pre">6.2,</span> <span class="pre">'Cl':</span> <span class="pre">5.12,</span> <span class="pre">'Co':</span> <span class="pre">4.92,</span> <span class="pre">'Cr':</span> <span class="pre">5.51,</span> <span class="pre">'Fe':</span> <span class="pre">7.43,</span> <span class="pre">'H':</span> <span class="pre">12.0,</span> <span class="pre">'He':</span> <span class="pre">10.99,</span> <span class="pre">'Mg':</span> <span class="pre">7.4,</span> <span class="pre">'Mn':</span> <span class="pre">5.34,</span> <span class="pre">'N':</span> <span class="pre">7.88,</span> <span class="pre">'Na':</span> <span class="pre">6.16,</span> <span class="pre">'Ne':</span> <span class="pre">7.94,</span> <span class="pre">'Ni':</span> <span class="pre">6.05,</span> <span class="pre">'O':</span> <span class="pre">8.69,</span> <span class="pre">'P':</span> <span class="pre">5.42,</span> <span class="pre">'S':</span> <span class="pre">7.09,</span> <span class="pre">'Si':</span> <span class="pre">7.27,</span> <span class="pre">'Ti':</span> <span class="pre">4.81}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gastronomy.abundances.get_total_abund" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>float</dt><dd><p>N_z (number of atoms of element with atomic number z)
+per H (hydrogen atom)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gastronomy.abundances.ppm_to_A">
+<span class="sig-prename descclassname"><span class="pre">gastronomy.abundances.</span></span><span class="sig-name descname"><span class="pre">ppm_to_A</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ppm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gastronomy.abundances.ppm_to_A" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="minerals">
+<h1>Minerals<a class="headerlink" href="#minerals" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="gastronomy.minerals.Mineral">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">gastronomy.minerals.</span></span><span class="sig-name descname"><span class="pre">Mineral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">composition</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gastronomy.minerals.Mineral" title="Link to this definition"></a></dt>
+<dd><p>Subclass of molecules.Molecule because it requires some of the same
+functionality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>name</strong><span class="classifier">string (or None)</span></dt><dd></dd>
+<dt><strong>composition</strong><span class="classifier">dictionary</span></dt><dd></dd>
+<dt><strong>weight_amu</strong><span class="classifier">float</span></dt><dd><p>The weight of the molecule in atomic mass units (amu)</p>
+</dd>
+<dt><strong>weight</strong><span class="classifier">astropy.units.Quantity</span></dt><dd><p>The mass of the molecule</p>
+</dd>
+<dt><strong>elements</strong><span class="classifier">list</span></dt><dd><p>Returns the elements that make up the keys for self.composition</p>
+</dd>
+<dt><strong>unit_mass</strong><span class="classifier">float</span></dt><dd><p>Returns the mass of the mineral unit cell</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code>(ele)</p></td>
+<td><p>Returns the number of atoms, in the molecule, for the specified elemental species</p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</section>
+<section id="vy1995">
+<h1>VY1995<a class="headerlink" href="#vy1995" title="Link to this heading"></a></h1>
+<p>This module hosts functions that utilize the
+<a class="reference external" href="https://ui.adsabs.harvard.edu/abs/1995A%26AS..109..125V/abstract">Verner &amp; Yakovlev (1995)</a>
+X-ray absorption cross section tables.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="gastronomy.VY1995.compute_xsect">
+<span class="sig-prename descclassname"><span class="pre">gastronomy.VY1995.</span></span><span class="sig-name descname"><span class="pre">compute_xsect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">egrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shell</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gastronomy.VY1995.compute_xsect" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>astropy.units.Quantity (array, units of ‘Mbarn’)</dt><dd><p>Returns the total photoelectric absorption cross-section computed for
+the user specified element, ion(s), and shell(s).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gastronomy.VY1995.mineral_abs_xsect">
+<span class="sig-prename descclassname"><span class="pre">gastronomy.VY1995.</span></span><span class="sig-name descname"><span class="pre">mineral_abs_xsect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">egrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mineral</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gastronomy.VY1995.mineral_abs_xsect" title="Link to this definition"></a></dt>
+<dd><p>Build a continuum absorption model from the VY1995 tables
+following the chemical formula of a molecule or mineral.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Absorption cross-section (Astropy.Quantity) for the mineral over</dt><dd></dd>
+<dt>egrid values</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lia Corrales.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
