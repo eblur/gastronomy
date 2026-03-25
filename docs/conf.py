@@ -14,7 +14,7 @@ import sys
 # OR if your code is in the root:
 sys.path.insert(0, os.path.abspath('..'))
 
-autodoc_mock_imports = ['numpy', 'astropy']
+#autodoc_mock_imports = ['numpy', 'astropy']
 
 
 # -- Project information -----------------------------------------------------
