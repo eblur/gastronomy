@@ -10,11 +10,11 @@ import sys
 
 # Add the parent directory of 'docs' to the path
 # Assuming structure: project_root/docs/conf.py and project_root/src/my_package/
-sys.path.insert(0, os.path.abspath('../gastronomy')) 
+# sys.path.insert(0, os.path.abspath('../gastronomy')) 
 # OR if your code is in the root:
-# sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('..'))
 
-autodoc_mock_imports = ['numpy', 'astropy']
+#autodoc_mock_imports = ['numpy', 'astropy']
 
 
 # -- Project information -----------------------------------------------------
