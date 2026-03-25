@@ -14,6 +14,9 @@ sys.path.insert(0, os.path.abspath('../gastronomy'))
 # OR if your code is in the root:
 # sys.path.insert(0, os.path.abspath('..'))
 
+autodoc_mock_imports = ['numpy', 'astropy']
+
+
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
