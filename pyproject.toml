@@ -29,3 +29,11 @@ dev = ["pytest>=7.0"]
 # Tell setuptools where the source lives
 [tool.setuptools.packages.find]
 where = ["."]       # where the main source code lives
+
+# -------------------------------------------------
+# Set up for pypi
+[project.urls]
+Homepage = "https://github.com/eblur/gastronomy"
+Documentation = "https://https://eblur.github.io/gastronomy/"
+
+
