@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gastronomy"
-version = "1.0"
+version = "1.0.1"
 description = "Convenience functions and scripts for calculating ISM properties from a few simple abundance tables"
 authors = [
     { name = "Lia Corrales", email = "liac@umich.edu" }
