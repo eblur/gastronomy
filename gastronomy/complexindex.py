@@ -7,6 +7,7 @@ from .minerals import Mineral
 
 K_EDGES = {
     'C': 0.284 * u.keV,
+    'N': 0.401 * u.keV,
     'O': 0.532 * u.keV,
     'Mg': 1.305 * u.keV,
     'Si': 1.839 * u.keV,

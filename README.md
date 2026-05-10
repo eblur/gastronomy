@@ -5,21 +5,41 @@ Convenience functions and scripts for calculating gas properties from a few simp
 
 Download the source code using git clone or download and unpack the tar-ball from Github.
 
-Navigate to the top "gastronomy" folder.
+Navigate to the top "gastronomy" folder. Then run,
 
-Then run:
-
-```
+```bash
 pip install -e .
 ```
 
 Exit out of the directory before you try running it.
 
+## Optional dependencies
+
+If you plan to use the `complexindex` module (complex refractive index calculations), then the package `kkcalc` is required. Install it together with `gastronomy` from the source tree:
+
+```bash
+pip install .[complexindex]
+```
+
+### Note for Mac users
+
+Zsh (the default terminal environment) treats `.[complexindex]` as a glob pattern. Use quotes instead, for example:
+
+```bash
+pip install '.[complexindex]'
+```
+
+<!-- From PyPI (published package):
+
+```bash
+pip install gastronomy[complexindex]
+``` -->
+
 ## Quick start
 
 To calculate an absorption cross-section of a compound from Verner & Yakovlev (1995) tables:
 
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -40,7 +60,7 @@ plt.show()
 ```
 
 To compute the absorption cross-section for one ion from the Verner & Yakovlev (1995) tables:
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 

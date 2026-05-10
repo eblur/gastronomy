@@ -24,6 +24,7 @@ dependencies = [
 # Optional: Development‑only dependencies (e.g., testing, linting)
 [project.optional-dependencies]
 dev = ["pytest>=7.0"]
+complexindex = ["kkcalc"]
 
 # -------------------------------------------------
 # Tell setuptools where the source lives
