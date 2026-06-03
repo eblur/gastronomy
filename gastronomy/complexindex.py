@@ -1,6 +1,6 @@
 
 import numpy as np
-from astropy.units import u
+import astropy.units as u
 import kkcalc as kk
 from .VY1995 import mineral_abs_xsect
 from .minerals import Mineral
