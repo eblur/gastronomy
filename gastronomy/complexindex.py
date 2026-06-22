@@ -99,17 +99,18 @@ def construct_egrid(element_list, emin, emax, loggrid=True,
             edge_energies.append(L_EDGES[element])
     
     # insert a fine grid around each edge
+    final_grid = np.copy(egrid_eV)
     for edge in edge_energies:
-        if emin_eV < edge.to('eV').value < emax_eV:
+        if emin_eV < edge.to('eV').value:
             edge_eV = edge.to('eV').value
             step_eV = edge_step.to('eV').value
             fine_egrid = np.arange(edge_eV - edge_margin_eV, 
                                    edge_eV + edge_margin_eV, 
                                    step_eV)
-            egrid_eV = np.concatenate((egrid_eV, fine_egrid))
+            final_grid = np.concatenate((egrid_eV[egrid_eV < emin_eV], fine_egrid))
     
     # return with the correct units
-    return egrid_eV * u.eV
+    return final_grid * u.eV
 
 def mineral_to_formula(mineral):
     """
