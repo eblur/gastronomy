@@ -100,7 +100,7 @@ def construct_egrid(element_list, emin, emax, loggrid=True,
     
     # insert a fine grid around each edge
     for edge in edge_energies:
-        if emin_eV < edge < emax_eV:
+        if emin_eV < edge.to('eV').value < emax_eV:
             edge_eV = edge.to('eV').value
             step_eV = edge_step.to('eV').value
             fine_egrid = np.arange(edge_eV - edge_margin_eV, 
