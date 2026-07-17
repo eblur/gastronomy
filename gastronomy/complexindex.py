@@ -14,7 +14,7 @@ K_EDGES = {
     'Fe': 7.112 * u.keV
     }
 
-L_EDGES = {'Fe': 0.708 * u.keV}
+L_EDGES = {'Fe': 0.725 * u.keV}
 
 __all__ = ['calculate_Xray_complex_index_of_refraction', 
            'construct_egrid', 
@@ -101,14 +101,15 @@ def construct_egrid(element_list, emin, emax, loggrid=True,
     # insert a fine grid around each edge
     final_grid = np.copy(egrid_eV)
     for edge in edge_energies:
-        if emin_eV < edge.to('eV').value:
+        if (emin_eV < edge.to('eV').value) and (edge.to('eV').value < emax_eV):
             edge_eV = edge.to('eV').value
             step_eV = edge_step.to('eV').value
             fine_egrid = np.arange(edge_eV - edge_margin_eV, 
                                    edge_eV + edge_margin_eV, 
                                    step_eV)
-            final_grid = np.concatenate((egrid_eV[egrid_eV < emin_eV], fine_egrid))
-    
+            final_grid = np.hstack([final_grid[final_grid < fine_egrid[0]],
+                                    fine_egrid,
+                                    final_grid[final_grid > fine_egrid[-1]]])
     # return with the correct units
     return final_grid * u.eV
 
