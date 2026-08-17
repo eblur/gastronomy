@@ -53,7 +53,7 @@ def calculate_Xray_complex_index_of_refraction(mineral, emin=0.1 * u.keV, emax=1
     full_egrid, delta, beta = _kkcalc_optical_constants(mineral, egrid, abs_xs)
     re_part = 1 - delta
     im_part = beta
-    return full_egrid * u.eV, re_part, im_part
+    return full_egrid, re_part, im_part
 
 def construct_egrid(element_list, emin, emax, loggrid=True,
                      ne=1000, edge_step=1.0 * u.eV, edge_margin_eV=30):
