@@ -48,3 +48,14 @@ class Mineral(Molecule):
     def unit_mass(self):
         return sum([self.number(ele) * amu[ele] * c.u.to('g')
             for ele in self.elements])
+
+    def to_latex(self):
+        result = ''
+        for ele in self.elements:
+            n = self.composition[ele]
+            if n == 1:
+                result += f"{ele}"
+            else:
+                result += f"{ele}" + "$_{" + f"{n}" + "}$"
+        return result
+            
