@@ -5,16 +5,37 @@ import kkcalc as kk
 from .VY1995 import mineral_abs_xsect
 from .minerals import Mineral
 
-K_EDGES = {
-    'C': 0.284 * u.keV,
-    'N': 0.401 * u.keV,
-    'O': 0.532 * u.keV,
-    'Mg': 1.305 * u.keV,
-    'Si': 1.839 * u.keV,
-    'Fe': 7.112 * u.keV
-    }
+# K_EDGES = {
+#     'C': 0.284 * u.keV,
+#     'N': 0.401 * u.keV,
+#     'O': 0.532 * u.keV,
+#     'Mg': 1.305 * u.keV,
+#     'Si': 1.839 * u.keV,
+#     'Fe': 7.112 * u.keV
+#     }
 
-L_EDGES = {'Fe': 0.725 * u.keV}
+# L_EDGES = {'Fe': 0.725 * u.keV}
+
+# UPDATING K, L, and M edges from VY1995:
+K_EDGES = {'Be': np.float64(0.119), 'B': np.float64(0.194), 'C': np.float64(0.291), 'N': np.float64(0.405), 'O': np.float64(0.538), 
+           'F': np.float64(0.694), 'Ne': np.float64(0.87), 'Na': np.float64(1.08), 'Mg': np.float64(1.31), 'Al': np.float64(1.57), 
+           'Si': np.float64(1.85), 'P': np.float64(2.15), 'S': np.float64(2.48), 'Cl': np.float64(2.83), 'Ar': np.float64(3.2), 
+           'K': np.float64(3.61), 'Ca': np.float64(4.04), 'Sc': np.float64(4.49), 'Ti': np.float64(4.97), 'V': np.float64(5.48), 
+           'Cr': np.float64(6.0), 'Mn': np.float64(6.55), 'Fe': np.float64(7.12), 'Co': np.float64(7.72), 'Ni': np.float64(8.35), 
+           'Cu': np.float64(8.99), 'Zn': np.float64(9.67)}
+
+
+L1_EDGES = {'Al': np.float64(0.126), 'Si': np.float64(0.156), 'P': np.float64(0.194), 'S': np.float64(0.235), 'Cl': np.float64(0.278), 
+            'Ar': np.float64(0.326), 'K': np.float64(0.384), 'Ca': np.float64(0.442), 'Sc': np.float64(0.503), 'Ti': np.float64(0.569), 
+            'V': np.float64(0.638), 'Cr': np.float64(0.703), 'Mn': np.float64(0.782), 'Fe': np.float64(0.857), 'Co': np.float64(0.94), 
+            'Ni': np.float64(1.02), 'Cu': np.float64(1.11), 'Zn': np.float64(1.2)}
+
+L23_EDGES = {'Si': np.float64(0.106), 'P': np.float64(0.14), 'S': np.float64(0.17), 'Cl': np.float64(0.209), 'Ar': np.float64(0.249), 
+             'K': np.float64(0.301), 'Ca': np.float64(0.352), 'Sc': np.float64(0.405), 'Ti': np.float64(0.464), 'V': np.float64(0.527), 
+             'Cr': np.float64(0.585), 'Mn': np.float64(0.655), 'Fe': np.float64(0.724), 'Co': np.float64(0.8), 'Ni': np.float64(0.876), 
+             'Cu': np.float64(0.947), 'Zn': np.float64(1.04)}
+
+M1_EDGES = {'Fe': np.float64(0.104), 'Co': np.float64(0.115), 'Ni': np.float64(0.125), 'Cu': np.float64(0.129), 'Zn': np.float64(0.145)}
 
 __all__ = ['calculate_Xray_complex_index_of_refraction', 
            'construct_egrid', 
@@ -94,9 +115,13 @@ def construct_egrid(element_list, emin, emax, loggrid=True,
     edge_energies = []
     for element in element_list:
         if element in K_EDGES:
-            edge_energies.append(K_EDGES[element])
-        if element in L_EDGES:
-            edge_energies.append(L_EDGES[element])
+            edge_energies.append(K_EDGES[element] * u.keV)
+        if element in L1_EDGES:
+            edge_energies.append(L1_EDGES[element] * u.keV)
+        if element in L23_EDGES:
+            edge_energies.append(L23_EDGES[element] * u.keV)
+        if element in M1_EDGES:
+            edge_energies.append(M1_EDGES[element] * u.keV)
     
     # insert a fine grid around each edge
     final_grid = np.copy(egrid_eV)
